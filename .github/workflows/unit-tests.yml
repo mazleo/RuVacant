@@ -1,0 +1,32 @@
+name: unit-tests
+
+on:
+  push:
+  pull_request:
+    branches: [ "dev", "staging", "prod" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: node:23-slim
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+          cache: 'npm'
+
+      - name: Install cached dependencies
+        uses: actions/cache@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm unittest
+
+
