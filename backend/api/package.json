@@ -1,11 +1,17 @@
 {
   "name": "ruvacant-api",
   "version": "1.0.0",
-  "description": "The API backend for RuVacant",
+  "description": "The api backend for RuVacant",
   "type": "module",
-  "main": "server.js",
+  "main": "api.js",
   "scripts": {
-    "test": "test"
+    "start": "npx tsc && node api.js",
+    "test": "test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --ignore-path .gitignore --write \"./**/*.+(js|ts|json)\"",
+    "prettier:fix": "prettier --write .",
+    "prettify": "npm run lint && npm run lint:fix && npm run prettier && npm run prettier:fix"
   },
   "repository": {
     "type": "git",
@@ -19,7 +25,9 @@
   "homepage": "https://github.com/mazleo/RuVacant#readme",
   "devDependencies": {
     "@eslint/js": "^9.25.1",
-    "@types/node": "^22.14.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.18.1",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.57.1",
     "globals": "^16.0.0",

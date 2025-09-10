@@ -1,14 +1,10 @@
-import js from "@eslint/js";
 import globals from "globals";
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
-import { defineConfig } from "eslint/config";
 
-export default defineConfig([
-  {
-    files: ["**/*.{js,mjs,cjs,ts}"],
-    plugins: { js },
-    extends: ["js/recommended"],
-  },
+export default [
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     files: ["**/*.{js,mjs,cjs,ts}"],
     languageOptions: {
@@ -45,7 +41,6 @@ export default defineConfig([
       "no-unused-private-class-members": "error",
       "no-unused-vars": "error",
       "no-use-before-define": "error",
-      "no-useless-assignment": "error",
       "block-scoped-var": "error",
       camelcase: "error",
       "class-methods-use-this": "error",
@@ -65,5 +60,4 @@ export default defineConfig([
       "sort-imports": "error",
     },
   },
-  tseslint.configs.recommended,
-]);
+];
