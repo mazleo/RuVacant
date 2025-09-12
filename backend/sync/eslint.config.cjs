@@ -1,0 +1,79 @@
+const globals = require('globals');
+const js = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+
+module.exports = [
+  {
+    // Ignore all compiled JavaScript and declaration files
+    ignores: ['**/*.js', '**/*.d.ts'],
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,mjs,cjs}'],
+    languageOptions: {
+      globals: globals.browser,
+      parserOptions: {
+        allowReserved: false,
+        ecmaFeatures: { globalReturn: false, impliedStrict: true, jsx: false },
+      },
+    },
+    rules: {
+      'getter-return': 'error',
+      'no-cond-assign': 'error',
+      'no-const-assign': 'error',
+      'no-constant-binary-expression': 'error',
+      'no-constructor-return': 'error',
+      'no-dupe-args': 'error',
+      'no-dupe-class-members': 'error',
+      'no-dupe-else-if': 'error',
+      'no-dupe-keys': 'error',
+      'no-duplicate-case': 'error',
+      'no-duplicate-imports': 'error',
+      'no-empty-pattern': 'error',
+      'no-fallthrough': 'error',
+      'no-func-assign': 'error',
+      'no-import-assign': 'error',
+      'no-invalid-regexp': 'error',
+      'no-irregular-whitespace': 'error',
+      'no-new-native-nonconstructor': 'error',
+      'no-obj-calls': 'error',
+      'no-setter-return': 'error',
+      'no-undef': 'error',
+      'no-unreachable': 'error',
+      'no-unreachable-loop': 'error',
+      'no-unused-private-class-members': 'error',
+      'no-unused-vars': 'error',
+      'no-use-before-define': 'error',
+      'block-scoped-var': 'error',
+      camelcase: 'error',
+      'class-methods-use-this': 'error',
+      curly: 'error',
+      'default-case-last': 'error',
+      'default-param-last': 'error',
+      'no-invalid-this': 'error',
+      'no-redeclare': 'error',
+      'no-return-assign': 'error',
+      'no-shadow-restricted-names': 'error',
+      'no-unused-expressions': 'error',
+      'no-useless-rename': 'error',
+      'no-useless-return': 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'require-await': 'error',
+      'sort-imports': 'error',
+    },
+  },
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+       'no-undef': 'off'
+    },
+  },
+];

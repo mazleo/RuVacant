@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "The sync backend for RuVacant",
   "type": "module",
-  "main": "sync.js",
+  "main": "./out/sync.js",
   "scripts": {
-    "start": "npx tsc && node sync.js",
+    "start": "npx tsc && LOG_LEVEL=info node ./out/sync.js",
+    "start_dev": "npx tsc && LOG_LEVEL=debug node ./out/sync.js",
     "test": "test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./**/*.+(js|ts|json)\"",
     "prettier:fix": "prettier --write .",
-    "prettify": "npm run lint && npm run lint:fix && npm run prettier && npm run prettier:fix"
+    "prettify": "npm run prettier && npm run prettier:fix",
+    "lintify": "npm run lint && npm run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -28,11 +30,14 @@
     "@types/express": "^5.0.3",
     "@types/node": "^22.18.1",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
-    "@typescript-eslint/parser": "^5.62.0",
+    "@typescript-eslint/parser": "^8.43.0",
     "eslint": "^8.57.1",
     "globals": "^16.0.0",
     "prettier": "^2.8.8",
     "typescript": "^4.9.5",
     "typescript-eslint": "^8.31.0"
+  },
+  "dependencies": {
+    "winston": "^3.17.0"
   }
 }
