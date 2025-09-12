@@ -12,7 +12,7 @@ module.exports = [
   {
     files: ['**/*.{ts,mjs,cjs}'],
     languageOptions: {
-      globals: globals.browser,
+      globals: globals.node,
       parserOptions: {
         allowReserved: false,
         ecmaFeatures: { globalReturn: false, impliedStrict: true, jsx: false },
@@ -73,7 +73,7 @@ module.exports = [
     },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
-       'no-undef': 'off'
+      'no-undef': 'off',
     },
   },
 ];
