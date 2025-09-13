@@ -1,6 +1,6 @@
 {
   "name": "ruvacant-sync",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "The sync backend for RuVacant",
   "type": "module",
   "main": "./out/sync.js",
@@ -9,11 +9,8 @@
     "start_dev": "npx tsc && LOG_LEVEL=debug node ./out/sync.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./**/*.+(js|ts|json)\"",
-    "prettier:fix": "prettier --write .",
-    "prettify": "npm run prettier && npm run prettier:fix",
-    "lintify": "npm run lint && npm run lint:fix"
+    "prettier:check": "prettier --ignore-path .gitignore --check \"./**/*.+(js|ts|json)\""
   },
   "repository": {
     "type": "git",

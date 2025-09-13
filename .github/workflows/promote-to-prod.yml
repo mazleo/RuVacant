@@ -1,0 +1,27 @@
+
+name: Promote to Prod
+
+on:
+  push:
+    branches: [ "staging" ]
+  workflow_dispatch:
+  
+jobs:
+  promote-to-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request from staging to prod
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GH_PAT }}
+          commit-message: "automated: promote staging to prod"
+          title: "Auto-promote: staging -> prod"
+          body: |
+            Automated pull request to merge `staging` into `prod`.
+            This was triggered by a successful push on the `staging` branch.
+          head: staging
+          base: prod
+          branch: features/auto-promote-staging
+          signoff: true
+          auto-merge: false
+          merge-method: merge
