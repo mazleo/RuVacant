@@ -1,5 +1,10 @@
 {
   "devDependencies": {
-    "@types/node": "^24.3.1"
-  }
+    "@types/node": "^24.3.1",
+    "ts-jest": "^29.4.4"
+  },
+  "workspaces": [
+    "backend/sync",
+    "backend/api"
+  ]
 }
