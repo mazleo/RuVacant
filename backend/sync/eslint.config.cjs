@@ -10,10 +10,13 @@ module.exports = [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.{ts,mjs,cjs}'],
+    // Apply project-aware rules ONLY to .ts files
+    files: ['**/*.ts'],
     languageOptions: {
       globals: globals.node,
       parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
         allowReserved: false,
         ecmaFeatures: { globalReturn: false, impliedStrict: true, jsx: false },
       },
@@ -40,6 +43,7 @@ module.exports = [
     },
   },
   {
+    // Config for .cjs files
     files: ['**/*.cjs'],
     languageOptions: {
       globals: {
@@ -47,6 +51,7 @@ module.exports = [
       },
     },
     rules: {
+      // These files use require() so we disable the rule here
       '@typescript-eslint/no-require-imports': 'off',
       'no-undef': 'off',
     },

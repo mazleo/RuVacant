@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # IDE 
 .vscode
@@ -6,6 +7,8 @@
 # Node
 node_modules/
 =======
+=======
+>>>>>>> main
 # Logs
 logs
 *.log
@@ -150,5 +153,9 @@ vite.config.ts.timestamp-*
 
 # IDE
 
+<<<<<<< HEAD
 .vscode/
 >>>>>>> 6578f54 (Add .gitignore)
+=======
+.vscode/
+>>>>>>> main
