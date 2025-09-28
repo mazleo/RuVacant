@@ -7,9 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build-and-test-sync:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./backend/sync
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

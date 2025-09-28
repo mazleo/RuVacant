@@ -2,13 +2,13 @@ name: Pre-deployment Test
 
 on:
   push:
-    branches-ignore: [ "dev", "prod" ]
+    branches-ignore: ["dev", "prod"]
   pull_request:
-    branches: [ "dev", "staging", "prod" ]
+    branches: ["dev", "staging", "prod"]
   workflow_dispatch:
 
 jobs:
-  unit-test:
+  test-sync:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,16 +20,16 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '23'
-          cache: 'npm'
+          node-version: "23"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
 
       - name: Run unit tests
         run: npm test
-        
-  lint-test:
+
+  lint-test-sync:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,8 +41,8 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '23'
-          cache: 'npm'
+          node-version: "23"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
@@ -50,7 +50,7 @@ jobs:
       - name: Run lint test
         run: npm run lint
 
-  formatting-test:
+  formatting-test-sync:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -62,8 +62,8 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '23'
-          cache: 'npm'
+          node-version: "23"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
