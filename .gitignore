@@ -143,3 +143,6 @@ vite.config.ts.timestamp-*
 # IDE
 
 .vscode/
+
+# Firestore
+backend/service-account-key.json
