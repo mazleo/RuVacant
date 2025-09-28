@@ -9,7 +9,7 @@ on:
 
 jobs:
   unit-test:
-    runs-on: node:23-slim
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./backend/sync
@@ -33,7 +33,7 @@ jobs:
         run: npm test
         
   lint-test:
-    runs-on: node:23-slim
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./backend/sync
@@ -57,7 +57,7 @@ jobs:
         run: npm run lint
 
   formatting-test:
-    runs-on: node:23-slim
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./backend/sync
