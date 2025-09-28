@@ -154,8 +154,15 @@ vite.config.ts.timestamp-*
 # IDE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .vscode/
 >>>>>>> 6578f54 (Add .gitignore)
 =======
 .vscode/
+>>>>>>> main
+=======
+.vscode/
+
+# Firestore
+backend/service-account-key.json
 >>>>>>> main
