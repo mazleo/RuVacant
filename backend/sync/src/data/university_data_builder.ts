@@ -1,4 +1,8 @@
-import { CampusCode, LevelCode, Semester } from './rutgers_constants.js';
+import {
+  CampusCode,
+  LevelCode,
+  Semester,
+} from '../constants/rutgers_constants.js';
 import { UniversityData } from './university_data.js';
 import logger from '../logging/logger.js';
 
