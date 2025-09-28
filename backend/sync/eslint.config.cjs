@@ -27,7 +27,6 @@ module.exports = [
       'no-unused-private-class-members': 'error',
       'block-scoped-var': 'error',
       camelcase: 'error',
-      'class-methods-use-this': 'error',
       curly: 'error',
       'default-case-last': 'error',
       'default-param-last': 'error',
