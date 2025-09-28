@@ -23,9 +23,6 @@ jobs:
           node-version: '23'
           cache: 'npm'
 
-      - name: Install cached dependencies
-        uses: actions/cache@v4
-
       - name: Install dependencies
         run: npm ci
 
@@ -47,9 +44,6 @@ jobs:
           node-version: '23'
           cache: 'npm'
 
-      - name: Install cached dependencies
-        uses: actions/cache@v4
-
       - name: Install dependencies
         run: npm ci
 
@@ -70,9 +64,6 @@ jobs:
         with:
           node-version: '23'
           cache: 'npm'
-
-      - name: Install cached dependencies
-        uses: actions/cache@v4
 
       - name: Install dependencies
         run: npm ci
