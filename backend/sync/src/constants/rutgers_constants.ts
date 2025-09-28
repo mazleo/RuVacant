@@ -10,6 +10,11 @@ export const SUBJECTS_PATH = '/oldsoc/subjects.json';
 /** The path for the Rutgers courses data. */
 export const COURSES_PATH = '/oldsoc/courses.json';
 
+/** The default headers when requesting from the Rutgers server. */
+export const DEFAULT_HEADERS = {
+  'Content-Type': 'application/json',
+};
+
 /** The semesters of a University and their code values. */
 export enum Semester {
   Winter = 0,
