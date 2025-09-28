@@ -1,5 +1,4 @@
-export { ResponseProvider } from './response_provider.js';
-export { ResponseType } from './response_type.js';
+export type { ResponseType } from './response_type.js';
 export { Subject } from './subject.js';
 export { Course } from './course.js';
 export { Building } from './building.js';
