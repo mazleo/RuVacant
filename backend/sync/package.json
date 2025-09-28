@@ -9,10 +9,10 @@
     "start_dev": "npx tsc && LOG_LEVEL=debug node ./out/sync.js",
     "build": "npx tsc",
     "debug": "npx tsc && LOG_LEVEL=debug node --inspect-brk ./out/sync.js",
-    "test": "LOG_LEVEL=debug node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+    "test": "LOG_LEVEL=debug NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "eslint .",
     "prettier": "prettier --ignore-path .gitignore --write './**/*.+(js|ts|json)'",
-    "prettier:check": "prettier --ignore-path .gitignore --check './**/*.+(js|ts|json)"
+    "prettier:check": "prettier --ignore-path .gitignore --check './**/*.+(js|ts|json)'"
   },
   "repository": {
     "type": "git",
