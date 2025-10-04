@@ -22,6 +22,8 @@ module.exports = [
       },
     },
     rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
       'no-constant-binary-expression': 'error',
       'no-constructor-return': 'error',
       'no-duplicate-imports': 'error',
