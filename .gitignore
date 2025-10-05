@@ -1,20 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> v0.1.0
 
 # IDE 
 .vscode
 
 # Node
 node_modules/
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> main
->>>>>>> v0.1.0
+
 # Logs
 logs
 *.log
@@ -158,14 +148,7 @@ vite.config.ts.timestamp-*
 .vite/
 
 # IDE
+.vscode/
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.vscode/
->>>>>>> 6578f54 (Add .gitignore)
-=======
-.vscode/
->>>>>>> main
-=======
-.vscode/
->>>>>>> 6578f54 (Add .gitignore)
+# Firestore
+backend/service-account-key.json
