@@ -2,8 +2,10 @@
 name: Promote to Prod
 
 on:
-  push:
-    branches: [ "staging" ]
+  pull_request:
+    types: [closed]
+    branches:
+      - staging
   workflow_dispatch:
   
 jobs:
