@@ -14,50 +14,39 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
-      - name: Checkout with full history
+      - name: Checkout the triggering commit
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Create, push, and track temporary branch
-        id: temp_branch
+      - name: Create and push the promotion branch
         run: |
-          BRANCH_NAME="temp-promo-${{ github.run_id }}"
-          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          BRANCH_NAME="features/auto-promote-${{ github.run_id }}${{ github.run_attempt }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
-          git checkout -b $BRANCH_NAME ${{ github.event.workflow_run.head_sha }}
-          git push origin $BRANCH_NAME
-          git branch --set-upstream-to=origin/$BRANCH_NAME $BRANCH_NAME
+          git checkout -b $BRANCH_NAME
+          git push -u origin $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
 
-      - name: Create Pull Request to Staging
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GH_PAT }}
-          commit-message: "automated: promote dev to staging"
-          title: "Auto-promote: dev -> staging"
-          body: |
-            Automated pull request to merge dev into staging.
-            Triggered by a successful run of workflow `${{ github.event.workflow_run.name }}` on commit `${{ github.event.workflow_run.head_sha }}`.
-            Workflow Run ID: ${{ github.event.workflow_run.id }}
-          base: staging
-          branch: features/auto-promote-dev
-          signoff: true
-          delete-branch: true
-
-      - name: Clean up temporary branch
-        if: always()
+      - name: Create Pull Request
+        id: create_pr
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
-          git push origin --delete ${{ steps.temp_branch.outputs.branch_name }}
+          PR_URL=$(gh pr create \
+            --base staging \
+            --head ${{ env.BRANCH_NAME }} \
+            --title "Auto-promote: dev -> staging" \
+            --body "Automated PR to promote changes from dev after successful tests. Workflow run ID: ${{ github.event.workflow_run.id }}")
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+          echo "Created PR: $PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Enable automerge
-        if: steps.cpr.outputs.pull-request-number
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GH_PAT }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: merge
+        run: |
+          gh pr merge ${{ env.PR_URL }} --auto --merge --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
