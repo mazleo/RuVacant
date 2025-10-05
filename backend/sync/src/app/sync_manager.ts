@@ -1,7 +1,7 @@
 import logger from '../logging/logger.js';
 
 export class SyncManager {
-  public sync(): void {
+  public async sync(): Promise<void> {
     logger.info('Starting sync.');
   }
 

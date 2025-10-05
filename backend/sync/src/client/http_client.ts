@@ -1,15 +1,26 @@
+import { RequestJob } from '../job/request_job.js';
+import axios from 'axios';
 import logger from '../logging/logger.js';
 
 export class HttpClient {
-  static async request(): Promise<void> {
+  static async request(
+    requestJob: RequestJob,
+  ): Promise<object | string | undefined> {
     logger.info('Making request from Rutgers servers.');
+    let response = undefined;
     try {
-      // TODO: v0.1.5 Create jobs
+      response = await axios(requestJob.getRequestOptions());
+      logger.debug(
+        typeof response.data === 'string'
+          ? response.data
+          : JSON.stringify(response.data),
+      );
     } catch (error) {
-      logger.info(
+      logger.error(
         'Encountered error while making request from Rutgers servers.',
       );
-      logger.debug(error);
+      logger.error(error);
     }
+    return response;
   }
 }

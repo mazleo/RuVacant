@@ -53,6 +53,21 @@ export class UniversityData {
   }
 
   toString(): string {
-    return `{subject: ${this.subject}, semester: ${this.semester}, level: ${this.level}, campus: ${this.campus}}`;
+    return JSON.stringify(this.serialize());
+  }
+
+  serialize(): object {
+    let subjectObject = {};
+    if (this.subject) {
+      subjectObject = {
+        subject: this.subject,
+      };
+    }
+    return {
+      semester: this.semester,
+      level: this.level,
+      campus: this.campus,
+      ...subjectObject,
+    };
   }
 }
