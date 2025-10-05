@@ -1,0 +1,49 @@
+{
+  "name": "ruvacant-sync",
+  "version": "0.1.0",
+  "description": "The sync backend for RuVacant",
+  "type": "module",
+  "main": "./out/sync.js",
+  "scripts": {
+    "start": "npx tsc -p tsconfig.build.json && LOG_LEVEL=info node ./out/sync.js",
+    "start_dev": "npx tsc -p tsconfig.build.json && LOG_LEVEL=debug node ./out/sync.js",
+    "build": "npx tsc -p tsconfig.build.json",
+    "debug": "npx tsc -p tsconfig.build.json && LOG_LEVEL=debug node --inspect-brk ./out/sync.js",
+    "test": "LOG_LEVEL=debug NODE_OPTIONS=--experimental-vm-modules jest",
+    "lint": "eslint .",
+    "prettier": "prettier --ignore-path .gitignore --write './**/*.+(js|ts|json)'",
+    "prettier:check": "prettier --ignore-path .gitignore --check './**/*.+(js|ts|json)'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mazleo/RuVacant.git"
+  },
+  "author": "Jonnelin Leonardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mazleo/RuVacant/issues"
+  },
+  "homepage": "https://github.com/mazleo/RuVacant#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.12",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.25.1",
+    "globals": "^15.8.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.45.0"
+  },
+  "dependencies": {
+    "@types/puppeteer": "^5.4.7",
+    "axios": "^1.12.2",
+    "firebase-admin": "^13.5.0",
+    "puppeteer": "^24.23.0",
+    "winston": "^3.17.0"
+  }
+}
