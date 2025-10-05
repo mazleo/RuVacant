@@ -1,4 +1,5 @@
-name: Promote to Staging
+
+name: Promote to Staging (DIAGNOSTIC)
 
 on:
   workflow_run:
@@ -9,55 +10,33 @@ on:
       - dev
 
 jobs:
-  promote-to-staging:
+  promote-to-staging-diagnostic:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout with full history
+      - name: Checkout the triggering commit with full history
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
 
-      - name: Create, push, and track temporary branch
-        id: temp_branch
+      - name: Diagnose diff between HEAD and staging
         run: |
-          BRANCH_NAME="temp-promo-${{ github.run_id }}"
-          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
-          git checkout -b $BRANCH_NAME ${{ github.event.workflow_run.head_sha }}
-          git push origin $BRANCH_NAME
-          git branch --set-upstream-to=origin/$BRANCH_NAME $BRANCH_NAME
-
-      - name: Create Pull Request to Staging
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GH_PAT }}
-          commit-message: "automated: promote dev to staging"
-          title: "Auto-promote: dev -> staging"
-          body: |
-            Automated pull request to merge dev into staging.
-            Triggered by a successful run of workflow `${{ github.event.workflow_run.name }}` on commit `${{ github.event.workflow_run.head_sha }}`.
-            Workflow Run ID: ${{ github.event.workflow_run.id }}
-          base: staging
-          branch: features/auto-promote-dev
-          signoff: true
-          delete-branch: true
-
-      - name: Clean up temporary branch
-        if: always()
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
-          git push origin --delete ${{ steps.temp_branch.outputs.branch_name }}
-
-      - name: Enable automerge
-        if: steps.cpr.outputs.pull-request-number
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GH_PAT }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: merge
+          echo ">>> Current Commit:"
+          git log -1 --oneline
+          
+          echo " "
+          echo ">>> Fetching staging branch..."
+          git fetch origin staging
+          
+          echo " "
+          echo ">>> Commits in HEAD not in origin/staging:"
+          git log --oneline origin/staging..HEAD
+          
+          echo " "
+          echo ">>> Diff summary between origin/staging and HEAD:"
+          git diff --stat origin/staging HEAD
+          
+          echo " "
+          echo ">>> If the log and diff above are empty, there are no changes."
+          echo ">>> If they show changes, the problem is with the create-pull-request action."
