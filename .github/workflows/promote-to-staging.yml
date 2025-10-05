@@ -23,23 +23,30 @@ jobs:
 
       - name: Create and push the promotion branch
         run: |
-          BRANCH_NAME="features/auto-promote-${{ github.run_id }}"
+          BRANCH_NAME="features/auto-promote-${{ github.run_id }}${{ github.run_attempt }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b $BRANCH_NAME
           git push -u origin $BRANCH_NAME
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Create Pull Request
+        id: create_pr
         run: |
-          gh pr create \
+          PR_URL=$(gh pr create \
             --base staging \
             --head ${{ env.BRANCH_NAME }} \
             --title "Auto-promote: dev -> staging" \
-            --body "Automated PR to promote changes from dev after successful tests. Workflow run ID: ${{ github.event.workflow_run.id }}"
+            --body "Automated PR to promote changes from dev after successful tests. Workflow run ID: ${{ github.event.workflow_run.id }}")
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+          echo "Created PR: $PR_URL"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Enable automerge
         run: |
-          gh pr merge ${{ env.BRANCH_NAME }} --auto --merge
+          gh pr merge ${{ env.PR_URL }} --auto --merge --delete-branch
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
