@@ -1,5 +1,4 @@
-
-name: Promote to Staging (DIAGNOSTIC)
+name: Promote to Staging
 
 on:
   workflow_run:
@@ -10,33 +9,37 @@ on:
       - dev
 
 jobs:
-  promote-to-staging-diagnostic:
+  promote-to-staging:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: Checkout the triggering commit with full history
+      - name: Checkout the triggering commit
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
-          fetch-depth: 0
 
-      - name: Diagnose diff between HEAD and staging
+      - name: Create and push the promotion branch
         run: |
-          echo ">>> Current Commit:"
-          git log -1 --oneline
-          
-          echo " "
-          echo ">>> Fetching staging branch..."
-          git fetch origin staging
-          
-          echo " "
-          echo ">>> Commits in HEAD not in origin/staging:"
-          git log --oneline origin/staging..HEAD
-          
-          echo " "
-          echo ">>> Diff summary between origin/staging and HEAD:"
-          git diff --stat origin/staging HEAD
-          
-          echo " "
-          echo ">>> If the log and diff above are empty, there are no changes."
-          echo ">>> If they show changes, the problem is with the create-pull-request action."
+          BRANCH_NAME="features/auto-promote-${{ github.run_id }}"
+          git checkout -b $BRANCH_NAME
+          git push -u origin $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        run: |
+          gh pr create \
+            --base staging \
+            --head ${{ env.BRANCH_NAME }} \
+            --title "Auto-promote: dev -> staging" \
+            --body "Automated PR to promote changes from dev after successful tests. Workflow run ID: ${{ github.event.workflow_run.id }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable automerge
+        run: |
+          gh pr merge ${{ env.BRANCH_NAME }} --auto --merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
