@@ -18,8 +18,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create and checkout a branch for the triggering commit
-        run: git checkout -b temp-workflow-branch ${{ github.event.workflow_run.head_sha }}
+      - name: Create, push, and track temporary branch
+        id: temp_branch
+        run: |
+          BRANCH_NAME="temp-promo-${{ github.run_id }}"
+          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          git checkout -b $BRANCH_NAME ${{ github.event.workflow_run.head_sha }}
+          git push origin $BRANCH_NAME
+          git branch --set-upstream-to=origin/$BRANCH_NAME $BRANCH_NAME
 
       - name: Create Pull Request to Staging
         id: cpr
@@ -36,6 +42,10 @@ jobs:
           branch: features/auto-promote-dev
           signoff: true
           delete-branch: true
+
+      - name: Clean up temporary branch
+        if: always()
+        run: git push origin --delete ${{ steps.temp_branch.outputs.branch_name }}
 
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number
