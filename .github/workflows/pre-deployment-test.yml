@@ -32,6 +32,8 @@ jobs:
   lint-test-sync:
     runs-on: ubuntu-latest
     defaults:
+      run:
+        working-directory: ./backend/sync
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -46,7 +48,7 @@ jobs:
         run: npm install
 
       - name: Run lint test
-        run: npm run lint -w backend/sync
+        run: npm run lint
 
   formatting-test-sync:
     runs-on: ubuntu-latest

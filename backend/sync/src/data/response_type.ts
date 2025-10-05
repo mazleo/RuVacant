@@ -1,5 +1,10 @@
 /**
  * Interface for Rutgers response types.
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface ResponseType {}
+
+import { JsonSerializer } from './json_serializer.js';
+
+export interface ResponseType extends JsonSerializer<ResponseType> {
+  /** Checks whether to keep the response type. */
+  isOfInterest(): boolean;
+}

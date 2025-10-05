@@ -1,4 +1,7 @@
 {
+  "name": "ruvacant",
+  "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "@types/node": "^24.3.1",
     "ts-jest": "^29.4.4"

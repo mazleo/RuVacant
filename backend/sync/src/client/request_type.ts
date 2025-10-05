@@ -2,8 +2,8 @@
  * Syncing request types.
  */
 export enum RequestType {
-  SUBJECT,
-  COURSE,
-  BUILDING,
-  INVALID,
+  Subject,
+  Course,
+  Building,
+  Invalid,
 }

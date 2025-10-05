@@ -1,0 +1,710 @@
+[
+  {
+    "description": "ACADEMIC AND STUDENT DEVELOPMENT",
+    "code": "907"
+  },
+  {
+    "description": "ACCOUNTING",
+    "code": "010"
+  },
+  {
+    "description": "ADMINISTRATIVE STUDIES",
+    "code": "011"
+  },
+  {
+    "description": "AFRICAN STUDIES",
+    "code": "016"
+  },
+  {
+    "description": "AFRICAN, M. EAST. & S. ASIAN LANG & LIT",
+    "code": "013"
+  },
+  {
+    "description": "AFRICANA STUDIES",
+    "code": "014"
+  },
+  {
+    "description": "AGRICULTURE AND FOOD SYSTEMS",
+    "code": "020"
+  },
+  {
+    "description": "AGRICULTURE AND NATURAL RESOURCE MGMT",
+    "code": "035"
+  },
+  {
+    "description": "ALCOHOL STUDIES",
+    "code": "047"
+  },
+  {
+    "description": "AMERICAN STUDIES",
+    "code": "050"
+  },
+  {
+    "description": "ANIMAL SCIENCE",
+    "code": "067"
+  },
+  {
+    "description": "ANTHROPOLOGY",
+    "code": "070"
+  },
+  {
+    "description": "ARABIC LANGUAGES",
+    "code": "074"
+  },
+  {
+    "description": "ARMENIAN",
+    "code": "078"
+  },
+  {
+    "description": "ART",
+    "code": "080"
+  },
+  {
+    "description": "ART HISTORY",
+    "code": "082"
+  },
+  {
+    "description": "ARTS AND SCIENCES",
+    "code": "090"
+  },
+  {
+    "description": "ASIAN STUDIES",
+    "code": "098"
+  },
+  {
+    "description": "BIOCHEMISTRY",
+    "code": "115"
+  },
+  {
+    "description": "BIOENVIRONMENTAL ENGINEERING",
+    "code": "117"
+  },
+  {
+    "description": "BIOLOGICAL SCIENCES",
+    "code": "119"
+  },
+  {
+    "description": "BIOMATHEMATICS",
+    "code": "122"
+  },
+  {
+    "description": "BIOMEDICAL ENGINEERING",
+    "code": "125"
+  },
+  {
+    "description": "BIOTECHNOLOGY",
+    "code": "126"
+  },
+  {
+    "description": "BUSINESS ANALYTICS AND INFORMATION TECH ",
+    "code": "136"
+  },
+  {
+    "description": "BUSINESS LAW",
+    "code": "140"
+  },
+  {
+    "description": "CELL BIO & NEURO SCI",
+    "code": "146"
+  },
+  {
+    "description": "CHEMICAL AND BIOCHEMICAL ENGINEERING",
+    "code": "155"
+  },
+  {
+    "description": "CHEMICAL BIOLOGY",
+    "code": "158"
+  },
+  {
+    "description": "CHEMISTRY",
+    "code": "160"
+  },
+  {
+    "description": "CHINESE",
+    "code": "165"
+  },
+  {
+    "description": "CINEMA STUDIES",
+    "code": "175"
+  },
+  {
+    "description": "CITY AND REGIONAL PLANNING",
+    "code": "170"
+  },
+  {
+    "description": "CIVIL AND ENVIRONMENTAL ENGINEERING",
+    "code": "180"
+  },
+  {
+    "description": "CLASSICS",
+    "code": "190"
+  },
+  {
+    "description": "COGNITIVE SCIENCES",
+    "code": "185"
+  },
+  {
+    "description": "COMMUNICATION",
+    "code": "192"
+  },
+  {
+    "description": "COMMUNICATION AND INFORMATION",
+    "code": "189"
+  },
+  {
+    "description": "COMMUNITY HEALTH OUTREACH",
+    "code": "193"
+  },
+  {
+    "description": "COMPARATIVE LITERATURE",
+    "code": "195"
+  },
+  {
+    "description": "COMPUTER SCIENCE",
+    "code": "198"
+  },
+  {
+    "description": "CRIMINAL JUSTICE",
+    "code": "202"
+  },
+  {
+    "description": "DANCE",
+    "code": "203"
+  },
+  {
+    "description": "DANCE - MGSA",
+    "code": "206"
+  },
+  {
+    "description": "DANCE EDUCATION",
+    "code": "207"
+  },
+  {
+    "description": "DATA SCIENCE",
+    "code": "219"
+  },
+  {
+    "description": "ECOLOGY, EVOLUTION AND NATURAL RESOURCES",
+    "code": "216"
+  },
+  {
+    "description": "ECONOMICS",
+    "code": "220"
+  },
+  {
+    "description": "EDUCATION",
+    "code": "300"
+  },
+  {
+    "description": "EDUCATIONAL OPPORTUNITY FUND",
+    "code": "364"
+  },
+  {
+    "description": "ELECTRICAL AND COMPU.",
+    "code": "332"
+  },
+  {
+    "description": "ENGLISH - FILM STUDIES",
+    "code": "354"
+  },
+  {
+    "description": "ENGLISH AS A SECOND LANGUAGE",
+    "code": "356"
+  },
+  {
+    "description": "ENGLISH: COMP & WRITING",
+    "code": "355"
+  },
+  {
+    "description": "ENGLISH: CREATIVE WRITING",
+    "code": "351"
+  },
+  {
+    "description": "ENGLISH: LITERARY THEORY",
+    "code": "353"
+  },
+  {
+    "description": "ENGLISH: LITERATURE",
+    "code": "358"
+  },
+  {
+    "description": "ENGLISH: THEORIES AND METHODS",
+    "code": "359"
+  },
+  {
+    "description": "ENTOMOLOGY",
+    "code": "370"
+  },
+  {
+    "description": "ENTREPRENEURSHIP",
+    "code": "382"
+  },
+  {
+    "description": "ENVIRON. POLICY, INSTITUTIONS & BEHAVIOR",
+    "code": "374"
+  },
+  {
+    "description": "ENVIRONMENTAL AND BIOLOGICAL SCIENCES",
+    "code": "015"
+  },
+  {
+    "description": "ENVIRONMENTAL AND BUSINESS ECONOMICS",
+    "code": "373"
+  },
+  {
+    "description": "ENVIRONMENTAL PLANNING AND DESIGN",
+    "code": "573"
+  },
+  {
+    "description": "ENVIRONMENTAL SCIENCES",
+    "code": "375"
+  },
+  {
+    "description": "ENVIRONMENTAL STUDIES",
+    "code": "381"
+  },
+  {
+    "description": "EUROPEAN STUDIES",
+    "code": "360"
+  },
+  {
+    "description": "EXCHANGE",
+    "code": "001"
+  },
+  {
+    "description": "EXERCISE SCIENCE",
+    "code": "377"
+  },
+  {
+    "description": "FILM STUDIES",
+    "code": "387"
+  },
+  {
+    "description": "FILMMAKING",
+    "code": "211"
+  },
+  {
+    "description": "FINANCE",
+    "code": "390"
+  },
+  {
+    "description": "FOOD SCIENCE",
+    "code": "400"
+  },
+  {
+    "description": "FRENCH",
+    "code": "420"
+  },
+  {
+    "description": "GENERAL ENGINEERING",
+    "code": "440"
+  },
+  {
+    "description": "GENETICS",
+    "code": "447"
+  },
+  {
+    "description": "GEOGRAPHY",
+    "code": "450"
+  },
+  {
+    "description": "GEOLOGICAL SCIENCES",
+    "code": "460"
+  },
+  {
+    "description": "GERMAN",
+    "code": "470"
+  },
+  {
+    "description": "GREEK",
+    "code": "490"
+  },
+  {
+    "description": "GREEK, MODERN",
+    "code": "489"
+  },
+  {
+    "description": "HEALTH ADMINISTRATION",
+    "code": "501"
+  },
+  {
+    "description": "HINDI",
+    "code": "505"
+  },
+  {
+    "description": "HISTORY GENERAL/COMPARATIVE",
+    "code": "506"
+  },
+  {
+    "description": "HISTORY, AFR ASIA LATIN AM",
+    "code": "508"
+  },
+  {
+    "description": "HISTORY, AMERICAN",
+    "code": "512"
+  },
+  {
+    "description": "HISTORY, EUROPEAN",
+    "code": "510"
+  },
+  {
+    "description": "HUMAN RESOURCE MANAGEMENT",
+    "code": "533"
+  },
+  {
+    "description": "HUNGARIAN",
+    "code": "535"
+  },
+  {
+    "description": "INDIVIDUALIZED MAJOR",
+    "code": "555"
+  },
+  {
+    "description": "INDUSTRIAL AND SYSTEMS ENGINEERING",
+    "code": "540"
+  },
+  {
+    "description": "INFORMATION TECHNOLOGY AND INFORMATICS",
+    "code": "547"
+  },
+  {
+    "description": "INTERDISCIPLINARY - MASON GROSS",
+    "code": "557"
+  },
+  {
+    "description": "INTERDISCIPLINARY - SEBS",
+    "code": "554"
+  },
+  {
+    "description": "INTERDISCIPLINARY STUDIES - ARTS & SCI",
+    "code": "556"
+  },
+  {
+    "description": "INTERNATIONAL BUSINESS AND BUSINESS",
+    "code": "522"
+  },
+  {
+    "description": "INTERNATIONAL STUDIES",
+    "code": "558"
+  },
+  {
+    "description": "ITALIAN",
+    "code": "560"
+  },
+  {
+    "description": "JAPANESE",
+    "code": "565"
+  },
+  {
+    "description": "JEWISH STUDIES",
+    "code": "563"
+  },
+  {
+    "description": "JOURNALISM AND MEDIA STUDIES",
+    "code": "567"
+  },
+  {
+    "description": "KOREAN",
+    "code": "574"
+  },
+  {
+    "description": "LABOR STUDIES",
+    "code": "575"
+  },
+  {
+    "description": "LANDSCAPE ARCHITECTURE",
+    "code": "550"
+  },
+  {
+    "description": "LANGUAGES AND CULTURES",
+    "code": "617"
+  },
+  {
+    "description": "LATIN",
+    "code": "580"
+  },
+  {
+    "description": "LATIN AMERICAN STUDIES",
+    "code": "590"
+  },
+  {
+    "description": "LATINO AND HISPANIC CARIBBEAN STUDIES",
+    "code": "595"
+  },
+  {
+    "description": "LEADERSHIP SKILLS",
+    "code": "607"
+  },
+  {
+    "description": "LINGUISTICS",
+    "code": "615"
+  },
+  {
+    "description": "MANAGEMENT",
+    "code": "620"
+  },
+  {
+    "description": "MANAGEMENT AND WORK",
+    "code": "624"
+  },
+  {
+    "description": "MARINE AND COASTAL SCIENCES",
+    "code": "628"
+  },
+  {
+    "description": "MARKETING",
+    "code": "630"
+  },
+  {
+    "description": "MASON GROSS DIGITAL FILMMAKING",
+    "code": "632"
+  },
+  {
+    "description": "MATERIALS SCIENCE AND ENGINEERING",
+    "code": "635"
+  },
+  {
+    "description": "MATHEMATICS",
+    "code": "640"
+  },
+  {
+    "description": "MECHANICAL AND AEROSPACE ENGINEERING",
+    "code": "650"
+  },
+  {
+    "description": "MEDICAL ETHICS AND POLICY",
+    "code": "652"
+  },
+  {
+    "description": "MEDICAL TECHNOLOGY",
+    "code": "660"
+  },
+  {
+    "description": "MEDIEVAL STUDIES",
+    "code": "667"
+  },
+  {
+    "description": "METEOROLOGY",
+    "code": "670"
+  },
+  {
+    "description": "MICROBIOLOGY",
+    "code": "680"
+  },
+  {
+    "description": "MIDDLE EASTERN STUDIES",
+    "code": "685"
+  },
+  {
+    "description": "MILITARY EDUCATION, AIR FORCE",
+    "code": "690"
+  },
+  {
+    "description": "MILITARY EDUCATION, ARMY",
+    "code": "691"
+  },
+  {
+    "description": "MILITARY EDUCATION, NAVY",
+    "code": "692"
+  },
+  {
+    "description": "MOL BIO & BIOCHEM",
+    "code": "694"
+  },
+  {
+    "description": "MUSIC",
+    "code": "700"
+  },
+  {
+    "description": "MUSIC, APPLIED (UNITS 07 AND 08)",
+    "code": "701"
+  },
+  {
+    "description": "NURSING",
+    "code": "705"
+  },
+  {
+    "description": "NUTRITIONAL SCIENCES",
+    "code": "709"
+  },
+  {
+    "description": "OPERATIONS RESEARCH",
+    "code": "711"
+  },
+  {
+    "description": "ORGANIZATIONAL LEADERSHIP",
+    "code": "713"
+  },
+  {
+    "description": "PERSIAN",
+    "code": "723"
+  },
+  {
+    "description": "PHARMACEUTICAL CHEMISTRY",
+    "code": "715"
+  },
+  {
+    "description": "PHARMACEUTICS",
+    "code": "721"
+  },
+  {
+    "description": "PHARMACOLOGY AND TOXICOLOGY",
+    "code": "718"
+  },
+  {
+    "description": "PHARMACY",
+    "code": "720"
+  },
+  {
+    "description": "PHARMACY PRACTICE AND ADMINISTRATION",
+    "code": "725"
+  },
+  {
+    "description": "PHILOSOPHY",
+    "code": "730"
+  },
+  {
+    "description": "PHYSICIAN ASSISTANT",
+    "code": "745"
+  },
+  {
+    "description": "PHYSICS",
+    "code": "750"
+  },
+  {
+    "description": "PLANNING AND PUBLIC POLICY",
+    "code": "762"
+  },
+  {
+    "description": "PLANT SCIENCE",
+    "code": "776"
+  },
+  {
+    "description": "POLICY, HEALTH, AND ADMINISTRATION",
+    "code": "775"
+  },
+  {
+    "description": "POLISH",
+    "code": "787"
+  },
+  {
+    "description": "POLITICAL SCIENCE",
+    "code": "790"
+  },
+  {
+    "description": "PORTUGUESE",
+    "code": "810"
+  },
+  {
+    "description": "PSYCHOLOGY",
+    "code": "830"
+  },
+  {
+    "description": "PUBLIC ADMIN AND MGMT",
+    "code": "843"
+  },
+  {
+    "description": "PUBLIC HEALTH",
+    "code": "832"
+  },
+  {
+    "description": "PUBLIC POLICY",
+    "code": "833"
+  },
+  {
+    "description": "REAL ESTATE",
+    "code": "851"
+  },
+  {
+    "description": "RELIGION",
+    "code": "840"
+  },
+  {
+    "description": "RUSSIAN",
+    "code": "860"
+  },
+  {
+    "description": "SEBS INTERNSHIP",
+    "code": "902"
+  },
+  {
+    "description": "SEXUALITIES STUDIES",
+    "code": "888"
+  },
+  {
+    "description": "SLAVIC AND EAST EUROPEAN STUDIES",
+    "code": "861"
+  },
+  {
+    "description": "SOCIAL JUSTICE",
+    "code": "904"
+  },
+  {
+    "description": "SOCIAL WORK",
+    "code": "910"
+  },
+  {
+    "description": "SOCIOLOGY",
+    "code": "920"
+  },
+  {
+    "description": "SPANISH",
+    "code": "940"
+  },
+  {
+    "description": "SPORT MANAGEMENT",
+    "code": "955"
+  },
+  {
+    "description": "STATISTICS",
+    "code": "960"
+  },
+  {
+    "description": "STUDY ABROAD",
+    "code": "959"
+  },
+  {
+    "description": "SUPPLY CHAIN MANAGEMENT",
+    "code": "799"
+  },
+  {
+    "description": "SWAHILI",
+    "code": "956"
+  },
+  {
+    "description": "THEATER",
+    "code": "965"
+  },
+  {
+    "description": "THEATER ARTS - MGSA",
+    "code": "966"
+  },
+  {
+    "description": "TURKISH",
+    "code": "973"
+  },
+  {
+    "description": "TWI",
+    "code": "974"
+  },
+  {
+    "description": "UKRANIAN",
+    "code": "967"
+  },
+  {
+    "description": "URBAN PLANNING",
+    "code": "971"
+  },
+  {
+    "description": "VISUAL ARTS",
+    "code": "081"
+  },
+  {
+    "description": "WOMEN'S AND GENDER STUDIES",
+    "code": "988"
+  },
+  {
+    "description": "WORLD LANGUAGES",
+    "code": "991"
+  }
+]
