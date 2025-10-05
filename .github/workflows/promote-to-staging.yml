@@ -13,10 +13,11 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout dev branch
+      - name: Checkout dev branch with full history
         uses: actions/checkout@v4
         with:
           ref: dev
+          fetch-depth: 0
 
       - name: Create Pull Request
         id: cpr
@@ -32,6 +33,7 @@ jobs:
           base: staging
           branch: features/auto-promote-dev
           signoff: true
+          delete-branch: true
 
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number
