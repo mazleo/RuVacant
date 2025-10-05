@@ -46,6 +46,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
 
+      - name: Wait for GitHub API to process the new PR
+        run: sleep 15
+
       - name: Enable automerge
         run: |
           gh pr merge ${{ env.PR_URL }} --auto --merge --delete-branch
