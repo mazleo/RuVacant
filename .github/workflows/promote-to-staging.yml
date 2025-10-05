@@ -12,6 +12,8 @@ jobs:
   promote-to-staging:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout with full history
         uses: actions/checkout@v4
