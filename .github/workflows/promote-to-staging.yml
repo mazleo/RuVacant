@@ -16,10 +16,11 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Checkout the triggering commit
+      - name: Checkout the repository with full history
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0 # Fetch all history for all branches and tags
 
       - name: Create and push the promotion branch
         run: |
@@ -44,6 +45,9 @@ jobs:
           echo "Created PR: $PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Wait for GitHub API to process the new PR
+        run: sleep 15
 
       - name: Enable automerge
         run: |
