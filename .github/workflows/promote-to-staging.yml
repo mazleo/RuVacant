@@ -1,4 +1,3 @@
-
 name: Promote to Staging
 
 on:
@@ -14,7 +13,13 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Create Pull Request from dev to staging
+      - name: Checkout dev branch
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GH_PAT }}
@@ -24,9 +29,14 @@ jobs:
             Automated pull request to merge `dev` into `staging`.
             This was triggered by a successful workflow run on the `dev` branch.
             Workflow Run ID: ${{ github.event.workflow_run.id }}
-          head: dev
           base: staging
           branch: features/auto-promote-dev
           signoff: true
-          auto-merge: true
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number
+        uses: peter-evans/enable-pull-request-automerge@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: merge
