@@ -29,9 +29,6 @@ export class DeserializationJobUtil {
           });
         }
         break;
-      case RequestType.Building:
-        // TODO: v0.1.5 - Deserialize HTML responses.
-        break;
       case RequestType.Invalid:
         throw new MessageJobError(
           'Retrieved an invalid RequestType in DeserializationJob.',
