@@ -13,7 +13,7 @@ export class MergeJob extends AbstractJob {
     this.validate(object);
     return new MergeJob(
       object.jobType,
-      object.universityData,
+      object.universityData !== undefined ? UniversityData.parse(object.universityData) : undefined,
       object.isWorkerFree,
       object.workerId,
       object.requestType,
@@ -21,7 +21,7 @@ export class MergeJob extends AbstractJob {
     );
   }
 
-  private static validate(object: any): void {
+  protected static validate(object: any): void {
     if (
       object.jobType === undefined ||
       object.isWorkerFree === undefined ||
@@ -29,11 +29,11 @@ export class MergeJob extends AbstractJob {
       object.requestType === undefined ||
       !object.deserializedResponse
     ) {
-      throw new MessageJobError('Invalide MergeJob input.');
+      throw new MessageJobError('Invalid MergeJob input.');
     }
   }
 
-  constructor(
+  protected constructor(
     jobType: JobType,
     universityData: UniversityData | undefined,
     isWorkerFree: boolean,
@@ -47,9 +47,7 @@ export class MergeJob extends AbstractJob {
   }
 
   async runJob(process: NodeJS.Process): Promise<void> {
-    logger.debug(`Running merge job.`);
-    this.sendNewJob(/** input= */ undefined, process);
-    logger.debug('Merge job complete.');
+    return new Promise<void>(resolve => resolve());
   }
 
   serializeJob(): object {
@@ -61,6 +59,5 @@ export class MergeJob extends AbstractJob {
   }
 
   sendNewJob(input: object | undefined, process: NodeJS.Process): void {
-    // TODO: v0.1.6 - Implement parallelization.
   }
 }

@@ -7,4 +7,5 @@ export enum JobType {
   Merge,
   IncrementJobs,
   DecrementJobs,
+  WorkerPause,
 }

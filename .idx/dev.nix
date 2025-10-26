@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   # Add your Nix packages here
   # e.g. pkgs.my-package
 

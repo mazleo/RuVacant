@@ -5,6 +5,7 @@ import { MessageJobError } from './message_job_error.js';
 import { RequestType } from '../client/request_type.js';
 import { UniversityData } from '../data/university_data.js';
 import logger from '../logging/logger.js';
+import { DeserializationJob } from './deserialization_job.js';
 
 export class RequestJob extends AbstractJob {
   requestType: RequestType;
@@ -17,7 +18,7 @@ export class RequestJob extends AbstractJob {
     this.validate(object);
     return new RequestJob(
       object.jobType,
-      object.universityData,
+      object.universityData !== undefined ? UniversityData.parse(object.universityData) : undefined,
       object.isWorkerFree,
       object.workerId,
       object.requestType,
@@ -28,7 +29,7 @@ export class RequestJob extends AbstractJob {
     );
   }
 
-  private static validate(object: any): void {
+  protected static validate(object: any): void {
     if (
       object.jobType === undefined ||
       object.isWorkerFree === undefined ||
@@ -43,7 +44,7 @@ export class RequestJob extends AbstractJob {
     }
   }
 
-  constructor(
+  protected constructor(
     jobType: JobType,
     universityData: UniversityData | undefined,
     isWorkerFree: boolean,
@@ -63,14 +64,24 @@ export class RequestJob extends AbstractJob {
   }
 
   async runJob(process: NodeJS.Process): Promise<void> {
-    logger.debug(`Running request job: ${this}`);
-    const response = await this.request();
-    if (response) {
-      logger.debug('Response received successfully.');
-      this.sendNewJob(response as object, process);
-    } else {
-      logger.debug('Request failed.');
-    }
+    this.timeAndRunJob(async () => {
+      logger.debug(`Running request job.`);
+      const response = await this.request();
+      if (response) {
+        logger.debug('Response received successfully.');
+        this.sendNewJob(response as object, process);
+      } else {
+        logger.debug('Request failed.');
+        const workerPauseJob = AbstractJob.parse({
+            jobType: JobType.WorkerPause,
+            isWorkerFree: false,
+            workerId: this.workerId,
+        })
+        if (process.send) {
+            process.send(workerPauseJob.serializeJob())
+        }
+      }
+    });
   }
 
   serializeJob(): object {
@@ -85,7 +96,18 @@ export class RequestJob extends AbstractJob {
   }
 
   sendNewJob(input: object | undefined, process: NodeJS.Process): void {
-    // TODO: v0.1.6 - Implement parallelization
+    logger.debug('Sending new deserialization job.');
+    const newDeserializationJob = DeserializationJob.parse({
+      jobType: JobType.Deserialization,
+      universityData: this.universityData,
+      isWorkerFree: false,
+      workerId: this.workerId,
+      requestType: this.requestType,
+      response: input,
+    });
+    if (process.send) {
+      process.send(newDeserializationJob.serializeJob());
+    }
   }
 
   getRequestOptions(): object {

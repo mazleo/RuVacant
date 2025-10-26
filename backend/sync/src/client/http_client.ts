@@ -32,7 +32,6 @@ export class HttpClient {
       );
       logger.error(error);
     }
-    logger.debug(JSON.stringify(response));
     return response;
   }
 

@@ -40,6 +40,26 @@ export class UniversityData {
    */
   readonly campus: string;
 
+  static parse(object: any): UniversityData {
+    this.validate(object);
+    return new UniversityData(
+      object.subject,
+      object.semester,
+      object.level,
+      object.campus,
+    );
+  }
+
+  static validate(object: any): void {
+    if (
+      !object.semester
+      || !object.level
+      || !object.campus
+    ) {
+      throw new Error('Invalid UniversityData input.');
+    }
+  }
+
   constructor(
     subject: string | undefined,
     semester: string,

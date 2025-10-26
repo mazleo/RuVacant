@@ -10,4 +10,6 @@ export interface MessageJob {
 
   /** Creates a new sequential job if needed. */
   sendNewJob(input: object | undefined, process: NodeJS.Process): void;
+
+  timeAndRunJob(job: () => void): Promise<void>;
 }

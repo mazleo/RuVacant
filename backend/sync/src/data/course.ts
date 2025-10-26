@@ -105,7 +105,7 @@ class Section implements JsonSerializer<Section> {
 
   deserializeJson(object: any): Section | undefined {
     this.instructors =
-      object.instructors !== null
+      object.instructors !== null && object.instructors !== undefined
         ? object.instructors
             .map((instructor: any) =>
               new Instructor().deserializeJson(instructor),
